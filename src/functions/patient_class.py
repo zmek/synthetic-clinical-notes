@@ -1,0 +1,58 @@
+from functions.pick_medical_condition import pick_medical_condition
+
+
+class Patient:
+    def __init__(
+        self,
+        id,
+        IMD_Decile_From_LSOA,
+        Age_Band,
+        Sex,
+        AE_Arrive_Date,
+        AE_Arrive_HourOfDay,
+        AE_Time_Mins,
+        AE_HRG,
+        AE_Num_Diagnoses,
+        AE_Num_Investigations,
+        AE_Num_Treatments,
+        AE_Arrival_Mode,
+        Provider_Patient_Distance_Miles,
+        ProvID,
+        Admitted_Flag,
+        Admission_Method,
+        ICD10_Chapter_Code,
+        Treatment_Function_Code,
+        Length_Of_Stay_Days,
+        Chapter,
+        Title,
+    ):
+        self.id = id
+        self.IMD_Decile_From_LSOA = IMD_Decile_From_LSOA
+        self.Age_Band = Age_Band
+        self.Sex = Sex
+        self.AE_Arrive_Date = AE_Arrive_Date
+        self.AE_Arrive_HourOfDay = AE_Arrive_HourOfDay
+        self.AE_Time_Mins = AE_Time_Mins
+        self.AE_HRG = AE_HRG
+        self.AE_Num_Diagnoses = AE_Num_Diagnoses
+        self.AE_Num_Investigations = AE_Num_Investigations
+        self.AE_Num_Treatments = AE_Num_Treatments
+        self.AE_Arrival_Mode = AE_Arrival_Mode
+        self.Provider_Patient_Distance_Miles = Provider_Patient_Distance_Miles
+        self.ProvID = ProvID
+        self.Admitted_Flag = Admitted_Flag
+        self.Admission_Method = Admission_Method
+        self.ICD10_Chapter_Code = ICD10_Chapter_Code
+        self.Treatment_Function_Code = Treatment_Function_Code
+        self.Length_Of_Stay_Days = Length_Of_Stay_Days
+        self.Chapter = Chapter
+        self.Title = Title
+        (
+            self.Medical_Condition,
+            self.Admission_Note,
+            self.Latest_Note,
+        ) = self._pick_medical_condition()
+
+    def _pick_medical_condition(self):
+        # generate the prompt for ChatGPT
+        return pick_medical_condition(self)

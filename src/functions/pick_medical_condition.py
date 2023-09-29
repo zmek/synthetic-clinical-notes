@@ -1,0 +1,133 @@
+"""
+Author: Zella King (zella.king@ucl.ac.uk)
+
+File: pick_medical_condition.py
+Description: Functions specific to picking a medical condition
+"""
+
+# Load libraries
+import json
+
+# Load functions
+from functions.prompt_functions import generate_prompt, generate_ChatGPT_response
+
+# Identify the path to the templates folder
+template_folder = "templates/prompt_templates/"
+
+
+def generate_prompt_presenting_condition(persona):
+    """
+    Takes in details of a patient, and a prompt template
+    Populates the template with the details
+    ARGS:
+      persona: the patient details as an instance of class Patient()
+      template_folder: the path to the folder where templates are stored.
+    RETURNS:
+      a str prompt that will be sent to OpenAI's GPT server.
+    """
+
+    # load the relevant prompt template
+    prompt_lib_file = template_folder + "pick_medical_condition.txt"
+
+    # populate the input with data from the persona
+    prompt_input = []
+    prompt_input.append(persona.Age_Band)
+    prompt_input.append(persona.AE_Arrive_HourOfDay)
+    prompt_input.append(persona.AE_Time_Mins)
+    prompt_input.append(persona.Length_Of_Stay_Days)
+    prompt_input.append(persona.ICD10_Chapter_Code)
+    prompt_input.append(persona.Title)
+
+    # generate the prompt
+    return generate_prompt(prompt_input, prompt_lib_file)
+
+
+def pick_medical_condition(persona):
+    """
+    Takes in details of a patient, and uses OpenAI to generate a medical
+    condition and an admission note.
+    ARGS:
+      persona: the patient as an instance of class Patient()
+    RETURNS:
+      a response from OpenAI's GPT server.
+      If successful, will return a medical condition and an admission note
+      If unsuccesful, will return a 'fail' in both fiels
+    """
+    # generate the prompt for ChatGPT
+    prompt = generate_prompt_presenting_condition(persona)
+
+    print(prompt)
+
+    function = {
+        "name": "pick_medical_condition",
+        "description": "A function that takes in patient details and returns a medical condition",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "possible_conditions": {
+                    "type": "array",
+                    "description": "A list of the 10 possible medical conditions for this patient.",
+                    "items": {
+                        "name": {
+                            "type": "string",
+                            "description": "A medical condition",
+                        },
+                    },
+                },
+                "most_likely_condition": {
+                    "type": "string",
+                    "description": "The most likely medical condition",
+                },
+                "admission_note": {
+                    "type": "string",
+                    "description": "Admission note",
+                },
+            },
+        },
+        "required": ["possible_conditions", "most_likely_condition", "admission_note"],
+    }
+
+    function_call = {"name": "pick_medical_condition"}
+
+    messages = [
+        {
+            "role": "system",
+            "content": "As a medical expert, you are tasked with identifying a patient's most likely reason for being admitted to hospital. You have information about the patient's ultimate length of stay in hospital that is unknown to the doctors writing notes about the patient. Use this information in deciding on the patient's most likely condition and level of acuity, and in writing the admission note. But don't reveal the length of stay in the admission note.",
+        },
+        {
+            "role": "user",
+            "content": prompt,
+        },
+    ]
+
+    response = generate_ChatGPT_response(messages, function, function_call)
+
+    content = response["choices"][0]["message"]["function_call"]["arguments"]
+
+    print(response)
+
+    content_json = None  # Initialize content_json
+
+    try:
+        content_json = json.loads(content)
+    except:
+        print(content_json)
+        return tuple(
+            ["failed on json.loads", "failed on json.loads", "failed on json.loads"]
+        )
+
+    try:
+        return (
+            content_json["most_likely_condition"],
+            content_json["admission_note"],
+            content_json["admission_note"],
+        )  # return admission note twice to populate latest note as well
+    except:
+        print(content_json)
+        return tuple(
+            [
+                "failed on json argument",
+                "failed on json argument",
+                "failed on json argument",
+            ]
+        )

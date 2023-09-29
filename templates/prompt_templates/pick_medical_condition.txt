@@ -1,0 +1,40 @@
+pick_medical_condition.txt
+
+As an expert in medical conditions and documentation, your goal is to create a comprehensive JSON object that includes information about a patient's condition, their admission note, and relevant details. 
+
+### INSTRUCTIONS ### 
+
+Create a JSON object with the following parameters:
+
+1. "possible_conditions": This should be a list of 10 potential medical conditions that the patient might have. Ensure that the list contains accurate and diverse options.
+
+2. "most_likely_condition": Based on the available information, identify the most likely medical condition. Pay particular attention to the patient's total length of stay. Consider whether their condition is serious enough to warrant the expected duration.
+
+3. "admission_note": Write a detailed medical note of approximately 200 words as if it was written by a doctor admitting this patient to the hospital. The note should include sections on Chief Complaint with symptoms, History of Present Illness, Past Medical History, Physical Examination, Assessment, and Plan. Include relevant vital signs and test results in the note.
+
+Note: The admission note should not include the patient or doctor names, timestamps, or any personally identifiable information.
+
+### CONTEXT ###
+
+You are provided with the following information about the patient:
+
+A patient aged 
+!<INPUT 0>!
+arrived at an Accident & Emergency Department in the UK between these hours (using 24 hour clock)
+!<INPUT 1>!.
+They spent 
+!<INPUT 2>!
+minutes in the Emergency Department before being admitted to the hospital as an inpatient. Their hospital will last
+!<INPUT 3>!
+days in total. 
+
+The patient's primary presenting condition has ICD10 chapter code signified by the roman numerals
+!<INPUT 4>! -- ICD 10 chapter
+falling within the broad category of 
+!<INPUT 5>!. -- ICD 10 chapter title
+
+The JSON object:
+
+{"possible_conditions": <Your list of conditions>}
+{"most_likely_condition": <The most likely condition>}
+{"admission_note": <The admission note>}
