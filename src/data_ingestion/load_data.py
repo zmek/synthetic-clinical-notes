@@ -28,6 +28,8 @@ from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
 import init
 
+from functions import set_up_logging
+
 def load_file():
     PROJECT_ROOT = os.getenv("PROJECT_ROOT")
     config = toml.load(Path(PROJECT_ROOT) / 'config.toml')
@@ -40,16 +42,9 @@ def load_file():
     icd10_file_path = PROJECT_ROOT + '/src/data_ingestion/icd10_lookup.csv'
 
     # Setup logging
-    log_dir = Path(PROJECT_ROOT) / 'logs'
-    log_dir.mkdir(exist_ok=True)
-    logging.basicConfig(level=logging.INFO,
-                        filename=Path(PROJECT_ROOT) / 'logs' / f"log_{datetime.now().strftime('%Y%m%d')}.txt",
-                        format='%(asctime)s - %(levelname)s - %(message)s')
+    set_up_logging.setup_logging()
     logger = logging.getLogger()
-    # Check if logger already has handlers to avoid duplicate logs
-    if not logger.handlers:
-        logger.addHandler(logging.StreamHandler())
-        
+            
     # Check and load data
     if not os.path.exists(parquet_file_path):
         if not os.path.exists(zip_file_path):
