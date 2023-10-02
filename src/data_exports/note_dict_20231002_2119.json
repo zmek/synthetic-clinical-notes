@@ -1,0 +1,102 @@
+{
+    "2827279": {
+        "Age_Band": "45-64",
+        "AE_Arrive_HourOfDay": "13-16",
+        "AE_Time_Mins": 290,
+        "Length_Of_Stay_Days": 2.0,
+        "ICD10_Chapter_Code": "XIX",
+        "Title": "Injury, poisoning and certain other consequences of external causes",
+        "Medical_Condition": "",
+        "Admission_Note": ""
+    },
+    "2931824": {
+        "Age_Band": "45-64",
+        "AE_Arrive_HourOfDay": "09-12",
+        "AE_Time_Mins": 370,
+        "Length_Of_Stay_Days": 2.0,
+        "ICD10_Chapter_Code": "XIX",
+        "Title": "Injury, poisoning and certain other consequences of external causes",
+        "Medical_Condition": "Fracture of the tibia",
+        "Admission_Note": ""
+    },
+    "2242585": {
+        "Age_Band": "65-84",
+        "AE_Arrive_HourOfDay": "17-20",
+        "AE_Time_Mins": 440,
+        "Length_Of_Stay_Days": 4.0,
+        "ICD10_Chapter_Code": "XIV",
+        "Title": "Diseases of the genitourinary system",
+        "Medical_Condition": "Urinary tract infection",
+        "Admission_Note": "\n  Chief Complaint:\n  The patient, a 65-84-year-old individual, arrived at the Accident & Emergency Department with complaints of urinary urgency, burning sensation during urination, and lower abdominal pain.\n\n  History of Present Illness:\n  The patient reports symptoms of a urinary tract infection (UTI) such as increased frequency of urination, malodorous urine, and occasional hematuria. The symptoms started approximately 3 days ago and have progressively worsened in the last 24 hours. No history of recent antibiotic use or any known urinary tract anomalies.\n\n  Past Medical History:\n  The patient has a history of hypertension, for which they take regular medications. No significant past surgical history or allergies were reported. No previous UTIs or genitourinary conditions.\n\n  Physical Examination:\n  On examination, the patient appeared uncomfortable due to abdominal pain. Vital signs revealed a temperature of 38.2\u00b0C, blood pressure within normal limits, heart rate of 88 beats per minute, and respiratory rate of 18 breaths per minute. Abdominal examination revealed tenderness in the suprapubic region. No costovertebral angle tenderness or flank pain.\n\n  Assessment:\n  Based on the patient's symptoms, physical examination findings, and history, the most likely diagnosis is a urinary tract infection. The patient's age and presence of risk factors make UTI a common condition to consider. Further investigations are warranted to confirm the diagnosis and rule out any complicating factors.\n\n  Plan:\n  1. Initiate empirical antibiotic therapy with appropriate coverage based on local antimicrobial resistance patterns.\n  2. Collect urine for urinalysis, culture, and sensitivity testing.\n  3. Monitor vital signs and urine output closely.\n  4. Provide analgesia for pain relief.\n  5. Encourage increased fluid intake to promote urinary flushing.\n  6. Educate the patient on the importance of completing the full course of antibiotics and provide instructions on self-care measures to prevent future UTIs.\n\n  The patient will be admitted as an inpatient for further evaluation, management, and close monitoring of their condition. Further investigations and consultations with relevant specialties will be considered as necessary. The patient's expected length of stay in the hospital is 4.0 days.\n  "
+    },
+    "3206525": {
+        "Age_Band": "45-64",
+        "AE_Arrive_HourOfDay": "21-24",
+        "AE_Time_Mins": 240,
+        "Length_Of_Stay_Days": 8.0,
+        "ICD10_Chapter_Code": "XIX",
+        "Title": "Injury, poisoning and certain other consequences of external causes",
+        "Medical_Condition": "Fracture",
+        "Admission_Note": "\n  Chief Complaint:\n  \n  The patient, a middle-aged adult, presented with severe pain and limited mobility in the right arm following a fall at home.\n\n  History of Present Illness:\n  \n  The patient reported slipping and falling on a wet floor while performing household chores. They landed on their outstretched right arm, resulting in immediate pain and inability to move the limb. There was no loss of consciousness or head injury reported. The patient experienced increasing pain and swelling in the affected arm, prompting them to seek medical attention at the Accident & Emergency Department.\n\n  Past Medical History:\n  \n  The patient's medical history is significant for hypertension, which is being managed with medication. There are no known allergies or previous fractures. The patient is a non-smoker and consumes alcohol occasionally.\n\n  Physical Examination:\n  \n  On physical examination, the patient appeared in distress, favoring their right arm. There was visible swelling and deformity in the right upper extremity, specifically at the midshaft of the right humerus. Range of motion in the right arm was severely restricted due to pain. Sensation and motor function in the fingers and hand were intact. Peripheral pulses were palpable and symmetrical. No signs of acute neurovascular compromise were noted.\n\n  Assessment:\n  \n  Based on the patient's history, physical examination, and the mechanism of injury, the most likely diagnosis is a fracture of the right humerus. The presence of swelling, deformity, and limited range of motion further supports this assessment. Other differentials, including soft tissue injury and dislocation, have been considered but appear less likely given the clinical findings.\n\n  Plan:\n  \n  The patient will be admitted as an inpatient for further evaluation, pain management, and orthopedic consultation. X-ray imaging of the right arm will be performed to confirm the diagnosis, assess the extent of the fracture, and guide further management. In the meantime, the patient will be provided with analgesics for pain control and immobilization of the right arm using a splint or sling to prevent further injury and enhance comfort. Serial neurovascular assessments will be conducted to monitor for any signs of compromise. Orthopedic surgery may be considered depending on the fracture type and degree of displacement.\n  "
+    },
+    "2217701": {
+        "Age_Band": "25-44",
+        "AE_Arrive_HourOfDay": "17-20",
+        "AE_Time_Mins": 330,
+        "Length_Of_Stay_Days": 2.0,
+        "ICD10_Chapter_Code": "XIV",
+        "Title": "Diseases of the genitourinary system",
+        "Medical_Condition": "",
+        "Admission_Note": ""
+    },
+    "5162913": {
+        "Age_Band": "45-64",
+        "AE_Arrive_HourOfDay": "21-24",
+        "AE_Time_Mins": 240,
+        "Length_Of_Stay_Days": 13.0,
+        "ICD10_Chapter_Code": "XVIII",
+        "Title": "Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified",
+        "Medical_Condition": "failed on json argument",
+        "Admission_Note": "failed on json argument"
+    },
+    "1194824": {
+        "Age_Band": "65-84",
+        "AE_Arrive_HourOfDay": "05-08",
+        "AE_Time_Mins": 160,
+        "Length_Of_Stay_Days": 2.0,
+        "ICD10_Chapter_Code": "X",
+        "Title": "Diseases of the respiratory system",
+        "Medical_Condition": "",
+        "Admission_Note": ""
+    },
+    "2987383": {
+        "Age_Band": "25-44",
+        "AE_Arrive_HourOfDay": "17-20",
+        "AE_Time_Mins": 240,
+        "Length_Of_Stay_Days": 2.0,
+        "ICD10_Chapter_Code": "XIX",
+        "Title": "Injury, poisoning and certain other consequences of external causes",
+        "Medical_Condition": "Intracranial injury with loss of consciousness of less than 30 minutes duration",
+        "Admission_Note": "Chief Complaint:\nThe patient, a 25-year-old male, presented to the Accident & Emergency Department with a complaint of head injury and loss of consciousness. He was brought in by ambulance after a fall from a height of approximately 6 feet.\n\nHistory of Present Illness:\nAccording to the patient, he fell while working on a construction site and landed on his head. He lost consciousness for less than 30 minutes and regained consciousness before the arrival of the ambulance. He complained of severe headache, dizziness, and blurred vision.\n\nPast Medical History:\nThe patient has no significant past medical history. He is not on any medications and has no known allergies.\n\nPhysical Examination:\nOn examination, the patient appeared alert and oriented. He had a visible laceration on his forehead with minimal bleeding. There was no evidence of skull deformity or scalp hematoma. The pupils were equal and reactive to light. Neurological examination revealed no focal deficits. The patient had tenderness on palpation of the frontal bone.\n\nAssessment:\nBased on the patient's history and physical examination findings, the most likely diagnosis is an intracranial injury with loss of consciousness of less than 30 minutes duration. The laceration on the forehead can be managed conservatively with wound cleaning and closure.\n\nPlan:\nThe patient will undergo a head CT scan to rule out any intracranial bleeding or fracture. He will be admitted as an inpatient for observation and neurologic monitoring. Analgesics will be provided for pain management. The patient will also be advised to rest and avoid physical exertion. Follow-up with the neurosurgery clinic will be arranged for further evaluation and management."
+    },
+    "3325602": {
+        "Age_Band": "85+",
+        "AE_Arrive_HourOfDay": "17-20",
+        "AE_Time_Mins": 30,
+        "Length_Of_Stay_Days": 21.0,
+        "ICD10_Chapter_Code": "XIX",
+        "Title": "Injury, poisoning and certain other consequences of external causes",
+        "Medical_Condition": "Fractured hip",
+        "Admission_Note": ""
+    },
+    "4864380": {
+        "Age_Band": "85+",
+        "AE_Arrive_HourOfDay": "01-04",
+        "AE_Time_Mins": 630,
+        "Length_Of_Stay_Days": 16.0,
+        "ICD10_Chapter_Code": "XVIII",
+        "Title": "Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified",
+        "Medical_Condition": "Dehydration",
+        "Admission_Note": "Chief Complaint:\nThe patient, an elderly individual aged 85+, presented to the Accident & Emergency Department with complaints of weakness, dizziness, and decreased urine output for the past 24 hours. \n\nHistory of Present Illness:\nThe patient reports a recent episode of vomiting and diarrhea, which has resulted in a reduced fluid intake. There is no reported fever, abdominal pain, or changes in bowel habits. The symptoms have progressively worsened over the past day.\n\nPast Medical History:\nThe patient has a past medical history of hypertension and chronic kidney disease. There is a history of recurrent urinary tract infections in the past year. No surgical history was reported. Medications include antihypertensive medications and diuretics.\n\nPhysical Examination:\nOn examination, the patient appears weak and mildly dehydrated. Vital signs include a temperature of 37.1\u00b0C, blood pressure of 130/80 mmHg, heart rate of 90 bpm, respiratory rate of 18 bpm, and oxygen saturation of 98% on room air. The patient's skin appears dry, with delayed capillary refill.\n\nAssessment:\nBased on the patient's clinical presentation, history, and physical examination findings, the most likely diagnosis is dehydration. The patient's reduced fluid intake and symptoms of weakness and dizziness are consistent with dehydration. The history of chronic kidney disease and recurrent urinary tract infections may increase the risk of dehydration in this patient.\n\nPlan:\nThe patient will be admitted to the hospital for fluid resuscitation and close monitoring of fluid balance. Laboratory investigations, including complete blood count, electrolyte panel, renal function tests, and urine analysis, will be performed to assess the severity of dehydration and to identify any underlying electrolyte imbalances or urinary tract infection. Intravenous fluids will be administered to restore and maintain hydration. The patient's blood pressure, heart rate, urine output, and clinical status will be monitored closely during the hospital stay.\n\nThis admission is expected to last approximately 16.0 days based on the patient's condition and the need for fluid resuscitation and monitoring. Regular reassessment of the patient's hydration status and response to treatment will guide the duration of hospital stay."
+    }
+}

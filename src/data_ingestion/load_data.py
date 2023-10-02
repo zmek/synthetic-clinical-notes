@@ -90,6 +90,8 @@ def load_file():
     else:
         # Load existing parquet file
         ed = pd.read_parquet(parquet_file_path)
+        ed = ed.reset_index().rename(columns= {'index' : 'id'})
+        ed['id'] = ed['id'].astype("str")
         logger.info(f"Loaded parquet file, shape: {ed.shape}")
 
     return ed

@@ -43,6 +43,7 @@ class Patient:
         Treatment_Function_Code,
         Length_Of_Stay_Days,
         Chapter,
+        Block,
         Title
     ):
         # Assign attributes
@@ -66,6 +67,7 @@ class Patient:
         self.Treatment_Function_Code = Treatment_Function_Code
         self.Length_Of_Stay_Days = Length_Of_Stay_Days
         self.Chapter = Chapter
+        self.Block = Block
         self.Title = Title
 
         # Get medical condition and notes
