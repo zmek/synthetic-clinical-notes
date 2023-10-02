@@ -1,13 +1,19 @@
+"""
+Author: Zella King (zella.king@ucl.ac.uk)
 
-# Script to load A&E Synthetic Data into a Pandas DataFrame
-# 
-# Inputs: None
-# Outputs: Pandas DataFrame saved in Parquet format
-#
-# Requires:
-# - Python Standard Libraries: sys, os, warnings, datetime, logging
-# - Third-Party Libraries: toml, pathlib, pandas, requests, py7zr
-# - Custom Libraries: init
+File: load_data.py
+Description: Script to load A&E Synthetic Data into a Pandas DataFrame
+
+Inputs: None
+Outputs: Pandas DataFrame saved in Parquet format
+
+Requires:
+- Python Standard Libraries: sys, os, warnings, datetime, logging
+- Third-Party Libraries: toml, pathlib, pandas, requests, py7zr
+- Custom Libraries: init
+
+"""
+
 
 import sys
 import os

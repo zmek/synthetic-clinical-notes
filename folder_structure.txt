@@ -1,0 +1,53 @@
+.
+├── LICENSE
+├── README.md
+├── __pycache__
+│   └── init.cpython-311.pyc
+├── config.toml
+├── data_store
+│   ├── A&E Synthetic Data.csv
+│   ├── A&E+Synthetic+Data.7z
+│   └── A&E+Synthetic+Data.parquet
+├── folder_structure.txt
+├── init.py
+├── logs
+│   ├── log_20230921.txt
+│   ├── log_20230922.txt
+│   ├── log_20230929.txt
+│   └── log_20231002.txt
+├── notebooks
+│   └── experiment-1.ipynb
+├── pyproject.toml
+├── requirements.txt
+├── src
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   └── __init__.cpython-311.pyc
+│   ├── data_exports
+│   │   └── __init__.py
+│   ├── data_ingestion
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-311.pyc
+│   │   │   └── load_data.cpython-311.pyc
+│   │   ├── icd10_lookup.csv
+│   │   └── load_data.py
+│   ├── functions
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-311.pyc
+│   │   │   ├── patient_class.cpython-311.pyc
+│   │   │   ├── pick_medical_condition.cpython-311.pyc
+│   │   │   └── prompt_functions.cpython-311.pyc
+│   │   ├── patient_class.py
+│   │   ├── pick_medical_condition.py
+│   │   └── prompt_functions.py
+│   └── utils
+│       └── __init__.py
+├── templates
+│   └── prompt_templates
+│       └── pick_medical_condition.txt
+└── tests
+    └── __init__.py
+
+16 directories, 35 files
