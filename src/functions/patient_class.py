@@ -1,7 +1,17 @@
+"""
+Author: Zella King (zella.king@ucl.ac.uk)
+
+File: patient_class.py
+Description: Class definition for a single instance of a patient
+"""
+
+
+# Import required modules
 from functions.pick_medical_condition import pick_medical_condition
 
-
+# Define Patient class
 class Patient:
+    # Initialize instance
     def __init__(
         self,
         id,
@@ -24,8 +34,9 @@ class Patient:
         Treatment_Function_Code,
         Length_Of_Stay_Days,
         Chapter,
-        Title,
+        Title
     ):
+        # Assign attributes
         self.id = id
         self.IMD_Decile_From_LSOA = IMD_Decile_From_LSOA
         self.Age_Band = Age_Band
@@ -47,12 +58,15 @@ class Patient:
         self.Length_Of_Stay_Days = Length_Of_Stay_Days
         self.Chapter = Chapter
         self.Title = Title
+
+        # Get medical condition and notes
         (
             self.Medical_Condition,
             self.Admission_Note,
             self.Latest_Note,
         ) = self._pick_medical_condition()
 
+    # Private method to pick medical condition
     def _pick_medical_condition(self):
-        # generate the prompt for ChatGPT
+        # Get medical condition from external function
         return pick_medical_condition(self)

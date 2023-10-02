@@ -7,12 +7,18 @@ Description: Functions specific to picking a medical condition
 
 # Load libraries
 import json
+import toml
+import os
+from pathlib import Path
 
 # Load functions
 from functions.prompt_functions import generate_prompt, generate_ChatGPT_response
 
 # Identify the path to the templates folder
-template_folder = "templates/prompt_templates/"
+
+PROJECT_ROOT = os.getenv("PROJECT_ROOT")
+config = toml.load(Path(PROJECT_ROOT) / 'config.toml')
+template_folder = str(Path(PROJECT_ROOT) / config['Paths']['PROMPT_TEMPLATE_PATH'])
 
 
 def generate_prompt_presenting_condition(persona):
@@ -27,7 +33,7 @@ def generate_prompt_presenting_condition(persona):
     """
 
     # load the relevant prompt template
-    prompt_lib_file = template_folder + "pick_medical_condition.txt"
+    prompt_lib_file = template_folder + "/pick_medical_condition.txt"
 
     # populate the input with data from the persona
     prompt_input = []
@@ -56,7 +62,7 @@ def pick_medical_condition(persona):
     # generate the prompt for ChatGPT
     prompt = generate_prompt_presenting_condition(persona)
 
-    print(prompt)
+    # print(prompt)
 
     function = {
         "name": "pick_medical_condition",
@@ -104,7 +110,7 @@ def pick_medical_condition(persona):
 
     content = response["choices"][0]["message"]["function_call"]["arguments"]
 
-    print(response)
+    # print(response)
 
     content_json = None  # Initialize content_json
 
