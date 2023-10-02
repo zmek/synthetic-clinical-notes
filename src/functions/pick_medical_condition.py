@@ -10,17 +10,19 @@ import json
 import toml
 import os
 from pathlib import Path
+import logging
 
 # Load functions
 from functions.prompt_functions import generate_prompt, generate_ChatGPT_response
+from functions import set_up_logging
+
 
 # Identify the path to the templates folder
-
 PROJECT_ROOT = os.getenv("PROJECT_ROOT")
 config = toml.load(Path(PROJECT_ROOT) / 'config.toml')
 template_folder = str(Path(PROJECT_ROOT) / config['Paths']['PROMPT_TEMPLATE_PATH'])
 
-
+# Function to generate the prompt
 def generate_prompt_presenting_condition(persona):
     """
     Takes in details of a patient, and a prompt template
@@ -59,6 +61,11 @@ def pick_medical_condition(persona):
       If successful, will return a medical condition and an admission note
       If unsuccesful, will return a 'fail' in both fiels
     """
+
+    # Setup logging
+    set_up_logging.setup_logging()
+    logger = logging.getLogger()
+
     # generate the prompt for ChatGPT
     prompt = generate_prompt_presenting_condition(persona)
 
@@ -106,7 +113,11 @@ def pick_medical_condition(persona):
         },
     ]
 
-    response = generate_ChatGPT_response(messages, function, function_call)
+    try:
+        response = generate_ChatGPT_response(messages, function, function_call)
+        logger.info("Got GPT response.")
+    except:
+        logger.error("No GPT response.")
 
     content = response["choices"][0]["message"]["function_call"]["arguments"]
 
@@ -116,8 +127,19 @@ def pick_medical_condition(persona):
 
     try:
         content_json = json.loads(content)
+        logger.info("successful json load")
+        logger.info(content_json)
     except:
-        print(content_json)
+        logger.info("failed on json loads")
+        logger.info(content)
+    
+    try:
+        content_json = json.loads(json.dumps(content))
+        logger.info("successful json dump and load")
+        logger.info(content_json)
+    except:
+        logger.info("failed on json dump and load")
+        logger.info(content)
         return tuple(
             ["failed on json.loads", "failed on json.loads", "failed on json.loads"]
         )
@@ -129,7 +151,8 @@ def pick_medical_condition(persona):
             content_json["admission_note"],
         )  # return admission note twice to populate latest note as well
     except:
-        print(content_json)
+        logger.info("failed on json argument")
+        logger.info(content_json)
         return tuple(
             [
                 "failed on json argument",
