@@ -11,6 +11,7 @@ import toml
 import os
 from pathlib import Path
 import logging
+import ast
 
 # Load functions
 from functions.prompt_functions import generate_prompt, generate_ChatGPT_response
@@ -121,6 +122,8 @@ def pick_medical_condition(persona):
 
     content = response["choices"][0]["message"]["function_call"]["arguments"]
 
+    # return(content)
+
     # print(response)
 
     content_json = None  # Initialize content_json
@@ -131,19 +134,27 @@ def pick_medical_condition(persona):
         logger.info(content_json)
     except:
         logger.info("failed on json loads")
-        logger.info(content)
-    
-    try:
-        content_json = json.loads(json.dumps(content))
-        logger.info("successful json dump and load")
-        logger.info(content_json)
-    except:
-        logger.info("failed on json dump and load")
-        logger.info(content)
-        return tuple(
-            ["failed on json.loads", "failed on json.loads", "failed on json.loads"]
-        )
 
+    if content_json is None:
+        try:
+            content_json = ast.literal_eval(content)
+            logger.info("successful json load with ast")
+            logger.info(content_json)
+        except:
+            logger.info("failed on json load with ast")
+
+    if content_json is None:
+    
+        try:
+            content_json = json.loads(json.dumps(content))
+            logger.info("successful json dump and load")
+            logger.info(content_json)
+        except:
+            logger.info("failed on json dump and load")
+            logger.info(content)
+            return tuple(
+                ["failed on json.loads", "failed on json.loads", "failed on json.loads"]
+            )
     try:
         return (
             content_json["most_likely_condition"],

@@ -69,6 +69,7 @@ class Patient:
         self.Title = Title
 
         # Get medical condition and notes
+        # self.Medical_Condition = self._pick_medical_condition()
         (
             self.Medical_Condition,
             self.Admission_Note,

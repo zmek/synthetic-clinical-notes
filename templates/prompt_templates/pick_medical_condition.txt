@@ -37,4 +37,4 @@ The JSON object:
 
 {"possible_conditions": <Your list of conditions>}
 {"most_likely_condition": <The most likely condition>}
-{"admission_note": <The admission note>}
+{"admission_note": """<The admission note>"""}

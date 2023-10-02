@@ -63,7 +63,7 @@ def generate_ChatGPT_response(messages, function, function_call):
     # ]
 
     response = ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-3.5-turbo-0613",
         messages=messages,
         functions=[function],
         function_call=function_call,  # this forces calling `function`
