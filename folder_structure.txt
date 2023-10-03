@@ -24,7 +24,9 @@
 │   ├── __pycache__
 │   │   └── __init__.cpython-311.pyc
 │   ├── data_exports
-│   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   ├── note_dict_20231002_2119.json
+│   │   └── note_dict_20231002_2120.json
 │   ├── data_ingestion
 │   │   ├── __init__.py
 │   │   ├── __pycache__
@@ -38,16 +40,22 @@
 │   │   │   ├── __init__.cpython-311.pyc
 │   │   │   ├── patient_class.cpython-311.pyc
 │   │   │   ├── pick_medical_condition.cpython-311.pyc
-│   │   │   └── prompt_functions.cpython-311.pyc
+│   │   │   ├── prompt_functions.cpython-311.pyc
+│   │   │   └── set_up_logging.cpython-311.pyc
 │   │   ├── patient_class.py
 │   │   ├── pick_medical_condition.py
-│   │   └── prompt_functions.py
+│   │   ├── prompt_functions.py
+│   │   └── set_up_logging.py
 │   └── utils
-│       └── __init__.py
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── __init__.cpython-311.pyc
+│       │   └── write_to_json.cpython-311.pyc
+│       └── write_to_json.py
 ├── templates
 │   └── prompt_templates
 │       └── pick_medical_condition.txt
 └── tests
     └── __init__.py
 
-16 directories, 35 files
+17 directories, 42 files

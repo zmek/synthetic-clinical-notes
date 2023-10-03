@@ -11,8 +11,8 @@ config = toml.load(Path(PROJECT_ROOT) / 'config.toml')
 output_folder = str(Path(PROJECT_ROOT) / 'src/data_exports')
 
 
-def write_to_json(data):
+def write_to_json(data, name_):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M")
-    filename = f"{output_folder}/note_dict_{timestamp}.json"
+    filename = f"{output_folder}/{name_}_{timestamp}.json"
     with open(filename, "w") as f:
         json.dump(data, f)
