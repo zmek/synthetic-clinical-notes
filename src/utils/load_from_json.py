@@ -12,7 +12,6 @@ config = toml.load(Path(PROJECT_ROOT) / 'config.toml')
 output_folder = str(Path(PROJECT_ROOT) / 'src/data_exports')
 
 
-
 def load_from_json(name_):
 
     files = glob.glob(output_folder + '/' + name_ + '*.json')
