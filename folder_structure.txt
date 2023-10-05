@@ -25,7 +25,6 @@
 │   │   └── __init__.cpython-311.pyc
 │   ├── data_exports
 │   │   ├── __init__.py
-│   │   ├── note_dict_20231002_2119.json
 │   │   └── note_dict_20231002_2120.json
 │   ├── data_ingestion
 │   │   ├── __init__.py
@@ -50,7 +49,9 @@
 │       ├── __init__.py
 │       ├── __pycache__
 │       │   ├── __init__.cpython-311.pyc
+│       │   ├── load_from_json.cpython-311.pyc
 │       │   └── write_to_json.cpython-311.pyc
+│       ├── load_from_json.py
 │       └── write_to_json.py
 ├── templates
 │   └── prompt_templates
@@ -58,4 +59,4 @@
 └── tests
     └── __init__.py
 
-17 directories, 42 files
+17 directories, 43 files
