@@ -6,17 +6,21 @@
 ├── config.toml
 ├── data_store
 │   ├── A&E Synthetic Data.csv
+│   ├── A&E Synthetic Data_admitted_only.csv
 │   ├── A&E+Synthetic+Data.7z
-│   └── A&E+Synthetic+Data.parquet
+│   ├── A&E+Synthetic+Data.parquet
+│   └── A&E+Synthetic+Data_admitted_only.parquet
 ├── folder_structure.txt
 ├── init.py
 ├── logs
 │   ├── log_20230921.txt
 │   ├── log_20230922.txt
 │   ├── log_20230929.txt
-│   └── log_20231002.txt
+│   ├── log_20231002.txt
+│   └── log_20231005.txt
 ├── notebooks
-│   └── experiment-1.ipynb
+│   ├── experiment-1.ipynb
+│   └── explore-nhse-ae-data.ipynb
 ├── pyproject.toml
 ├── requirements.txt
 ├── src
@@ -59,4 +63,4 @@
 └── tests
     └── __init__.py
 
-17 directories, 43 files
+17 directories, 47 files

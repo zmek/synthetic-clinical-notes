@@ -91,13 +91,13 @@ def load_nhse_data(admitted_only = True):
     else:
         # Load existing parquet file
         ed = pd.read_parquet(parquet_file_path)
-        ed = ed.reset_index().rename(columns= {'index' : 'id'})
-        ed['id'] = ed['id'].astype("str")
-
 
         if (admitted_only):
             ed = ed.query("Length_Of_Stay_Days > 1 and Admitted_Flag == 1")
-            
+
+        ed = ed.reset_index().rename(columns= {'index' : 'id'})
+        ed['id'] = ed['id'].astype("str")
+
         logger.info(f"Loaded parquet file, shape: {ed.shape}")
 
     return ed

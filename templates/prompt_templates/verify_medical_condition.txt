@@ -1,0 +1,27 @@
+verify_medical_condition.txt
+
+As as senior doctor in emergency medicine, your job is to verify the decisions of your juniors. Your hospital is at capacity and under severe pressure for inpatient beds, and the standard practice is to discharge any cases that can be safely managed in the community. Such cases may be referred back to hospital for treatment later, or referred to primary care or community services. Your job is to make sure that only patients whose condition is severe enough for them to need hospital care are given beds. 
+
+Therefore, you will review your colleague's admission note to decide if you agree that the patient should be admitted. 
+
+
+### INSTRUCTIONS ### 
+
+Create a JSON object with the following parameters:
+
+1. "discharge note": A discharge note that would accompany the patient if they were to be discharged instead of admitted. In this note, explain how the patient's condition would be managed if they were discharged to outpatient care.
+
+2. "feedback_to_colleague": Your feedback to your junior colleague about whether you agree with their decision to admit the patient. Begin with the words "In a hospital at capacity, the decision to admit versus discharge hinges on whether a condition can be safely managed outside of the hospital setting. In this case, the patient"  
+
+3. "agree_disagree": This should be one of two words: agree or disagree.
+
+Here is the admission note: 
+
+!<INPUT 0>!
+
+
+The JSON object:
+
+{"discharge": <Discharge note}
+{"feedback_to_colleague": <In a hospital at capacity, the decision to admit versus discharge hinges on whether a condition can be safely managed outside of the hospital setting. In this case, the patient ...>}
+{"agree_disagree": <one word agree or disagree>}
