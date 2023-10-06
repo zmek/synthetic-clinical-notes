@@ -118,7 +118,14 @@ def pick_medical_condition(persona):
         response = generate_ChatGPT_response(messages, function, function_call)
         logger.info("Got GPT response.")
     except:
-        logger.error("No GPT response.")
+        logger.info("No GPT response.")
+        return tuple(
+            [
+                "failed on GPT response",
+                "failed on GPT response",
+                "failed on GPT response",
+            ]
+        )
 
     content = response["choices"][0]["message"]["function_call"]["arguments"]
 
