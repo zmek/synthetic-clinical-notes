@@ -19,7 +19,8 @@
 │   ├── log_20231002.txt
 │   └── log_20231005.txt
 ├── notebooks
-│   ├── experiment-1.ipynb
+│   ├── experiment-1.0.1.ipynb
+│   ├── experiment-1.0.ipynb
 │   └── explore-nhse-ae-data.ipynb
 ├── pyproject.toml
 ├── requirements.txt
@@ -44,11 +45,13 @@
 │   │   │   ├── patient_class.cpython-311.pyc
 │   │   │   ├── pick_medical_condition.cpython-311.pyc
 │   │   │   ├── prompt_functions.cpython-311.pyc
-│   │   │   └── set_up_logging.cpython-311.pyc
+│   │   │   ├── set_up_logging.cpython-311.pyc
+│   │   │   └── verify_medical_condition.cpython-311.pyc
 │   │   ├── patient_class.py
 │   │   ├── pick_medical_condition.py
 │   │   ├── prompt_functions.py
-│   │   └── set_up_logging.py
+│   │   ├── set_up_logging.py
+│   │   └── verify_medical_condition.py
 │   └── utils
 │       ├── __init__.py
 │       ├── __pycache__
@@ -59,8 +62,9 @@
 │       └── write_to_json.py
 ├── templates
 │   └── prompt_templates
-│       └── pick_medical_condition.txt
+│       ├── pick_medical_condition.txt
+│       └── verify_medical_condition.txt
 └── tests
     └── __init__.py
 
-17 directories, 47 files
+17 directories, 51 files
