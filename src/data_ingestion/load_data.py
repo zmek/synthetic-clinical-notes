@@ -30,21 +30,61 @@ import init
 
 from functions import set_up_logging
 
-def load_nhse_data(admitted_only = True):
-    PROJECT_ROOT = os.getenv("PROJECT_ROOT")
-    config = toml.load(Path(PROJECT_ROOT) / 'config.toml')
+PROJECT_ROOT = os.getenv("PROJECT_ROOT")
+config = toml.load(Path(PROJECT_ROOT) / 'config.toml')
+DATA_STORE_PATH = Path(config['Paths']['DATA_STORE_PATH'])
 
-    # Define paths
-    DATA_STORE_PATH = Path(config['Paths']['DATA_STORE_PATH'])
-    zip_file_path = DATA_STORE_PATH / 'A&E+Synthetic+Data.7z'
-    csv_file_path = DATA_STORE_PATH / 'A&E Synthetic Data.csv'
-    parquet_file_path = DATA_STORE_PATH / 'A&E+Synthetic+Data.parquet'
+# Setup logging
+set_up_logging.setup_logging()
+logger = logging.getLogger()
+
+
+def load_coherent_data(admitted_only = True):
+
+    # Define paths specific to this function
+    csv_file_path = DATA_STORE_PATH / 'coherent-11-07-2022/csv/encounters.csv'
+    parquet_file_path = DATA_STORE_PATH / 'coherent-11-07-2022/csv/encounters.parquet'
+
+    # Check and load data
+    if not os.path.exists(parquet_file_path):
+        if not os.path.exists(csv_file_path):
+            # Download zip file
+            logger.error("Coherent dataset has not been downloaded.")
+
+        # Load csv, save as parquet
+        logger.info("Reading csv file.")
+        encounters = pd.read_csv(csv_file_path)
+
+        try:
+            encounters.to_parquet(parquet_file_path)
+            logger.info(f"Saved parquet file, shape: {encounters.shape}")
+        except Exception as e:
+            logger.error(e)
+
+    else:
+        # Load existing parquet file
+        encounters = pd.read_parquet(parquet_file_path)
+
+        # if (admitted_only):
+        #     encounters = encounters.query("Length_Of_Stay_Days > 1 and Admitted_Flag == 1")
+
+        encounters = encounters.reset_index().rename(columns= {'index' : 'id'})
+        encounters['id'] = encounters['id'].astype("str")
+
+        logger.info(f"Loaded parquet file, shape: {encounters.shape}")
+
+    return encounters
+
+
+
+def load_nhse_data(admitted_only = True):
+
+    # Define paths specific to this function
+    zip_file_path = DATA_STORE_PATH / 'A&E Synethetic Data/A&E+Synthetic+Data.7z'
+    csv_file_path = DATA_STORE_PATH / 'A&E Synethetic Data/A&E Synthetic Data.csv'
+    parquet_file_path = DATA_STORE_PATH / 'A&E Synethetic Data/A&E+Synthetic+Data.parquet'
     icd10_file_path = PROJECT_ROOT + '/src/data_ingestion/icd10_lookup.csv'
 
-    # Setup logging
-    set_up_logging.setup_logging()
-    logger = logging.getLogger()
-            
     # Check and load data
     if not os.path.exists(parquet_file_path):
         if not os.path.exists(zip_file_path):

@@ -1,7 +1,7 @@
 """
 Author: Zella King (zella.king@ucl.ac.uk)
 
-File: verify_medical_condition.py
+File: verify_admission_decision.py
 Description: Functions specific to verifying an admission decision
 """
 
@@ -20,8 +20,9 @@ from functions import set_up_logging
 
 # Identify the path to the templates folder
 PROJECT_ROOT = os.getenv("PROJECT_ROOT")
-config = toml.load(Path(PROJECT_ROOT) / 'config.toml')
-template_folder = str(Path(PROJECT_ROOT) / config['Paths']['PROMPT_TEMPLATE_PATH'])
+config = toml.load(Path(PROJECT_ROOT) / "config.toml")
+template_folder = str(Path(PROJECT_ROOT) / config["Paths"]["PROMPT_TEMPLATE_PATH"])
+
 
 # Function to generate the prompt
 def generate_prompt_presenting_condition(Admission_Note):
@@ -36,7 +37,7 @@ def generate_prompt_presenting_condition(Admission_Note):
     """
 
     # load the relevant prompt template
-    prompt_lib_file = template_folder + "/verify_medical_condition.txt"
+    prompt_lib_file = template_folder + "/verify_admission_decision.txt"
 
     # populate the input with data from the persona
     prompt_input = []
@@ -46,9 +47,9 @@ def generate_prompt_presenting_condition(Admission_Note):
     return generate_prompt(prompt_input, prompt_lib_file)
 
 
-def verify_medical_condition(persona):
+def verify_admission_decision(persona):
     """
-    Takes in admission note, and uses OpenAI to verify whether the 
+    Takes in admission note, and uses OpenAI to verify whether the
     patient should be admitted
     ARGS:
       Admission_Note: the note documenting a decision to admit
@@ -68,30 +69,38 @@ def verify_medical_condition(persona):
     # print(prompt)
 
     function = {
-        "name": "verify_medical_condition",
-        "description": "A function that verfies whether a patient should be admitted",
+        "name": "verify_admission_decision",
+        "description": "A function that verifies whether a patient should be admitted",
         "parameters": {
             "type": "object",
             "properties": {
-                "agree_disagree": {
+                "discharge_note": {
                     "type": "string",
-                    "description": "A one word expression of agree or disagree.",
+                    "description": "A discharge note.",
                 },
                 "feedback_to_colleague": {
                     "type": "string",
                     "description": "Feeback to colleague",
                 },
+                "agree_disagree": {
+                    "type": "string",
+                    "description": "A one word expression of agree or disagree.",
+                },
             },
         },
-        "required": ["agree_disagree", "feedback_to_colleague"],
+        "required": [
+            "discharge_note",
+            "feedback_to_colleague",
+            "agree_disagree",
+        ],
     }
 
-    function_call = {"name": "verify_medical_condition"}
+    function_call = {"name": "verify_admission_decision"}
 
     messages = [
         {
             "role": "system",
-            "content": "As a senior hospital doctor, your job is to make sure that only patients who need definitely hospital care are admitted.",
+            "content": "As a senior hospital doctor, your job is to make sure that only patients who need definitely hospital care are admitted",
         },
         {
             "role": "user",
@@ -103,7 +112,14 @@ def verify_medical_condition(persona):
         response = generate_ChatGPT_response(messages, function, function_call)
         logger.info("Got GPT response.")
     except:
-        logger.error("No GPT response.")
+        logger.info("No GPT response.")
+        return tuple(
+            [
+                "failed on GPT response",
+                "failed on GPT response",
+                "failed on GPT response",
+            ]
+        )
 
     content = response["choices"][0]["message"]["function_call"]["arguments"]
 
@@ -129,7 +145,6 @@ def verify_medical_condition(persona):
             logger.info("failed on json load with ast")
 
     if content_json is None:
-    
         try:
             content_json = json.loads(json.dumps(content))
             logger.info("successful json dump and load")
@@ -138,18 +153,20 @@ def verify_medical_condition(persona):
             logger.info("failed on json dump and load")
             logger.info(content)
             return tuple(
-                ["failed on json.loads", "failed on json.loads"]
+                ["failed on json.loads", "failed on json.loads", "failed on json.loads"]
             )
     try:
         return (
             content_json["agree_disagree"],
             content_json["feedback_to_colleague"],
-        )  
+            content_json["discharge_note"],
+        )
     except:
         logger.info("failed on json argument")
         logger.info(content_json)
         return tuple(
             [
+                "failed on json argument",
                 "failed on json argument",
                 "failed on json argument",
             ]

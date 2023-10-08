@@ -17,10 +17,12 @@
 │   ├── log_20230922.txt
 │   ├── log_20230929.txt
 │   ├── log_20231002.txt
-│   └── log_20231005.txt
+│   ├── log_20231005.txt
+│   └── log_20231006.txt
 ├── notebooks
 │   ├── experiment-1.0.1.ipynb
 │   ├── experiment-1.0.ipynb
+│   ├── experiment-1.2.ipynb
 │   └── explore-nhse-ae-data.ipynb
 ├── pyproject.toml
 ├── requirements.txt
@@ -30,7 +32,8 @@
 │   │   └── __init__.cpython-311.pyc
 │   ├── data_exports
 │   │   ├── __init__.py
-│   │   └── note_dict_20231002_2120.json
+│   │   ├── experiment_1.0_20231002_2120.json
+│   │   └── experiment_1.2_20231006_0850.json
 │   ├── data_ingestion
 │   │   ├── __init__.py
 │   │   ├── __pycache__
@@ -46,12 +49,12 @@
 │   │   │   ├── pick_medical_condition.cpython-311.pyc
 │   │   │   ├── prompt_functions.cpython-311.pyc
 │   │   │   ├── set_up_logging.cpython-311.pyc
-│   │   │   └── verify_medical_condition.cpython-311.pyc
+│   │   │   └── verify_admission_decision.cpython-311.pyc
 │   │   ├── patient_class.py
 │   │   ├── pick_medical_condition.py
 │   │   ├── prompt_functions.py
 │   │   ├── set_up_logging.py
-│   │   └── verify_medical_condition.py
+│   │   └── verify_admission_decision.py
 │   └── utils
 │       ├── __init__.py
 │       ├── __pycache__
@@ -63,8 +66,8 @@
 ├── templates
 │   └── prompt_templates
 │       ├── pick_medical_condition.txt
-│       └── verify_medical_condition.txt
+│       └── verify_admission_decision.txt
 └── tests
     └── __init__.py
 
-17 directories, 51 files
+17 directories, 54 files
