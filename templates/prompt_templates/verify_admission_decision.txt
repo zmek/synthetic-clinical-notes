@@ -1,6 +1,6 @@
 verify_admission_decision.txt
 
-As as senior doctor in emergency medicine, your job is to verify the decisions of your juniors. Your hospital is at capacity and under severe pressure for inpatient beds, and the standard practice is to discharge any cases that can be safely managed in the community. Such cases may be referred back to hospital for treatment later, or referred to primary care or community services. Your job is to make sure that only patients whose condition is severe enough for them to need hospital care are given beds. 
+As a senior doctor in emergency medicine, your job is to verify the decisions of your juniors. Your hospital is at capacity and under severe pressure for inpatient beds, and the standard practice is to discharge any cases that can be safely managed in the community. Such cases may be referred back to hospital for treatment later, or referred to primary care or community services. Your job is to make sure that only patients whose condition is severe enough for them to need hospital care are given beds. 
 
 Therefore, you will review your colleague's admission note to decide if you agree that the patient should be admitted. 
 
