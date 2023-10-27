@@ -37,7 +37,7 @@ def generate_prompt_presenting_condition(persona):
     """
 
     # load the relevant prompt template
-    prompt_lib_file = template_folder + "/pick_medical_condition.txt"
+    prompt_lib_file = template_folder + "/pick_medical_condition_extended.txt"
 
     # populate the input with data from the persona
     prompt_input = []
@@ -47,6 +47,15 @@ def generate_prompt_presenting_condition(persona):
     prompt_input.append(persona.Length_Of_Stay_Days)
     prompt_input.append(persona.ICD10_Chapter_Code)
     prompt_input.append(persona.Title)
+    prompt_input.append(persona.Treatment_Function_Title)
+    if persona.Sex == "1":
+        prompt_input.append("male")
+    else:
+        prompt_input.append("female")
+    prompt_input.append(persona.IMD_Decile_From_LSOA)
+    prompt_input.append(persona.AE_Num_Investigations)
+    prompt_input.append(persona.AE_Num_Treatments)
+    prompt_input.append(persona.AE_Num_Diagnoses)
 
     # generate the prompt
     return generate_prompt(prompt_input, prompt_lib_file)
