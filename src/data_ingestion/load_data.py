@@ -144,6 +144,12 @@ def load_nhse_data(admitted_only=True):
         ed.to_parquet(parquet_file_path)
         logger.info(f"Saved parquet file, shape: {ed.shape}")
 
+        if admitted_only:
+            ed = ed.query("Length_Of_Stay_Days > 1 and Admitted_Flag == 1")
+
+            ed = ed.reset_index().rename(columns={"index": "id"})
+            ed["id"] = ed["id"].astype("str")
+
     else:
         # Load existing parquet file
         ed = pd.read_parquet(parquet_file_path)
@@ -151,8 +157,8 @@ def load_nhse_data(admitted_only=True):
         if admitted_only:
             ed = ed.query("Length_Of_Stay_Days > 1 and Admitted_Flag == 1")
 
-        ed = ed.reset_index().rename(columns={"index": "id"})
-        ed["id"] = ed["id"].astype("str")
+            ed = ed.reset_index().rename(columns={"index": "id"})
+            ed["id"] = ed["id"].astype("str")
 
         logger.info(f"Loaded parquet file, shape: {ed.shape}")
 

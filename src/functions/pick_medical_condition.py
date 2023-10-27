@@ -20,8 +20,9 @@ from functions import set_up_logging
 
 # Identify the path to the templates folder
 PROJECT_ROOT = os.getenv("PROJECT_ROOT")
-config = toml.load(Path(PROJECT_ROOT) / 'config.toml')
-template_folder = str(Path(PROJECT_ROOT) / config['Paths']['PROMPT_TEMPLATE_PATH'])
+config = toml.load(Path(PROJECT_ROOT) / "config.toml")
+template_folder = str(Path(PROJECT_ROOT) / config["Paths"]["PROMPT_TEMPLATE_PATH"])
+
 
 # Function to generate the prompt
 def generate_prompt_presenting_condition(persona):
@@ -151,7 +152,6 @@ def pick_medical_condition(persona):
             logger.info("failed on json load with ast")
 
     if content_json is None:
-    
         try:
             content_json = json.loads(json.dumps(content))
             logger.info("successful json dump and load")

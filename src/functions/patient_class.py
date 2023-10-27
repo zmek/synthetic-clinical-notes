@@ -13,10 +13,9 @@ Requires:
 """
 
 
-
-
 # Import required modules
 from functions.pick_medical_condition import pick_medical_condition
+
 
 # Define Patient class
 class Patient:
@@ -44,7 +43,8 @@ class Patient:
         Length_Of_Stay_Days,
         Chapter,
         Block,
-        Title
+        Title,
+        Treatment_Function_Title,
     ):
         # Assign attributes
         self.id = id
@@ -69,6 +69,7 @@ class Patient:
         self.Chapter = Chapter
         self.Block = Block
         self.Title = Title
+        self.Treatment_Function_Title = Treatment_Function_Title
 
         # Get medical condition and notes
         # self.Medical_Condition = self._pick_medical_condition()
