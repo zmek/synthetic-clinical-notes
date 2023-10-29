@@ -10,7 +10,8 @@
 │   │   ├── A&E Synthetic Data_admitted_only.csv
 │   │   ├── A&E+Synthetic+Data.7z
 │   │   ├── A&E+Synthetic+Data.parquet
-│   │   └── A&E+Synthetic+Data_admitted_only.parquet
+│   │   ├── A&E+Synthetic+Data_admitted_only.parquet
+│   │   └── A&E+Synthetic+Data_old.parquet
 │   └── coherent-11-07-2022
 │       ├── README.md
 │       ├── csv
@@ -2509,11 +2510,19 @@
 │   ├── log_20231002.txt
 │   ├── log_20231005.txt
 │   ├── log_20231006.txt
-│   └── log_20231008.txt
+│   ├── log_20231008.txt
+│   ├── log_20231009.txt
+│   ├── log_20231013.txt
+│   ├── log_20231020.txt
+│   ├── log_20231022.txt
+│   └── log_20231027.txt
 ├── notebooks
 │   ├── experiment-1.0.1.ipynb
 │   ├── experiment-1.0.ipynb
+│   ├── experiment-1.1.1.ipynb
+│   ├── experiment-1.1.2.ipynb
 │   ├── experiment-1.1.ipynb
+│   ├── explore-coherent-data.ipynb
 │   └── explore-nhse-ae-data.ipynb
 ├── pyproject.toml
 ├── requirements.txt
@@ -2524,6 +2533,9 @@
 │   ├── data_exports
 │   │   ├── __init__.py
 │   │   ├── experiment_1.0_20231002_2120.json
+│   │   ├── experiment_1.1.1_20231022_1938.json
+│   │   ├── experiment_1.1.1_20231027_1639.json
+│   │   ├── experiment_1.1.2_20231027_1747.json
 │   │   ├── experiment_1.1_20231006_0850.json
 │   │   ├── experiment_1.1_20231008_2049.json
 │   │   └── experiment_1.1_20231008_2106.json
@@ -2533,7 +2545,8 @@
 │   │   │   ├── __init__.cpython-311.pyc
 │   │   │   └── load_data.cpython-311.pyc
 │   │   ├── icd10_lookup.csv
-│   │   └── load_data.py
+│   │   ├── load_data.py
+│   │   └── treatment_resource_groups.csv
 │   ├── functions
 │   │   ├── __init__.py
 │   │   ├── __pycache__
@@ -2560,8 +2573,9 @@
 ├── templates
 │   └── prompt_templates
 │       ├── pick_medical_condition.txt
+│       ├── pick_medical_condition_extended.txt
 │       └── verify_admission_decision.txt
 └── tests
     └── __init__.py
 
-23 directories, 2542 files
+23 directories, 2556 files
