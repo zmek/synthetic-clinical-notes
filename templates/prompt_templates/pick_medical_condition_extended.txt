@@ -47,10 +47,10 @@ Create a JSON object with the following parameters:
 
 3. "admission_note": Write a detailed medical note of approximately 200 words as if it was written by a doctor admitting this patient to the hospital. The note should include sections on Chief Complaint with symptoms, History of Present Illness, Past Medical History, Physical Examination, Assessment, and Plan. Include relevant vital signs and test results in the note.
 
-Note: The admission note should not include the patient or doctor names, timestamps, or any personally identifiable information.
+BE SURE TO INCLUDE THE ADMISSION NOTE IN THE JSON OBJECT. The admission note should not include the patient or doctor names, timestamps, or any personally identifiable information.
 
 The JSON object:
 
 {"possible_conditions": <Your list of conditions>}
 {"most_likely_condition": <The most likely condition>}
-{"admission_note": """<The admission note>"""}
+{"admission_note": """<The admission note>"""} 
