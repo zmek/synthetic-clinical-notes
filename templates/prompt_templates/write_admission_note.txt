@@ -1,0 +1,30 @@
+write_admission_note.txt
+
+
+Your goal is to give your judgement about a patient's condition and to make a plan for their admission to the hospital. 
+
+You may be given extensive list of lab results or observations.  Do not restate the results of observations as alist. However, you should refer to them in giving your judgement. 
+
+Tell me what you think the plan for this patient should be
+
+
+### INSTRUCTIONS ### 
+
+Create a JSON object with the following parameters:
+
+1. "admission_note": An admission note
+
+2. "diagnosis": Your diagnosis for this patient
+
+3. "length_of_stay": Your expected length of stay
+
+Here is some information about the patient: 
+
+!<INPUT 0>!
+
+
+The JSON object:
+
+{"admission_note": <Admission note}
+{"diagnosis": <Diagnosis>}
+{"length_of_stay": <how long you expect the hospital visit to be>}
