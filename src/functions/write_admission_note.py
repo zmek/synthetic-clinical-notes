@@ -12,9 +12,12 @@ import os
 from pathlib import Path
 import logging
 import ast
+import datetime
+import jinja2
+import tiktoken
 
 # Load functions
-from functions.prompt_functions import generate_prompt, generate_ChatGPT_response
+from functions.prompt_functions import generate_ChatGPT_response
 from functions import set_up_logging
 
 
@@ -24,8 +27,22 @@ config = toml.load(Path(PROJECT_ROOT) / "config.toml")
 template_folder = str(Path(PROJECT_ROOT) / config["Paths"]["PROMPT_TEMPLATE_PATH"])
 
 
+# Define the custom datetime filter for Jinja
+def datetime_filter(value):
+    return datetime.datetime.fromisoformat(value).replace(tzinfo=None)
+
+
+# Define a function to calculate a 'moment' 24 hours after the visit started
+def calculate_moment(patient_info):
+    encounter_started = patient_info["Encounter"]["Encounter Started"]
+    moment = datetime.datetime.fromisoformat(encounter_started) + datetime.timedelta(
+        days=1
+    )
+    return moment.replace(tzinfo=None)
+
+
 # Function to generate the prompt
-def generate_prompt_presenting_condition(patient_info):
+def generate_prompt_admission_note(patient_info):
     """
     Takes in an admission note, and a prompt template
     Populates the template with the details
@@ -39,12 +56,63 @@ def generate_prompt_presenting_condition(patient_info):
     # load the relevant prompt template
     prompt_lib_file = template_folder + "/write_admission_note.txt"
 
-    # populate the input with data from the persona
-    prompt_input = []
-    prompt_input.append(patient_info)
+    # Read the content of 'write_admission_note.txt' into a string
+    with open(prompt_lib_file, "r") as file:
+        admission_note_template_str = file.read()
+
+    # Set up the Jinja environment
+    env = jinja2.Environment()
+    env.filters["datetime"] = datetime_filter
+    env.globals["calculate_moment"] = calculate_moment
+
+    # Define the template with the admission note content and placeholders for the JSON structure
+    template_str = admission_note_template_str.replace(
+        "!<INPUT 0>!", "{{ formatted_admission_note | safe }}"
+    )
+
+    # Add the patient data
+    template_str = (
+        """
+    {% macro format_admission_note(patient_info) %}
+        {% set moment = calculate_moment(patient_info) %}
+        The time now is {{ moment }}
+        Hospital visit ID: {{ patient_info['Encounter']['Encounter id'] }}
+        Hospital visit began at: {{ patient_info['Encounter']['Encounter Started'] }}
+        Type of admission: {{ patient_info['Encounter']['Type of admission'] }}
+        Disorders and symptoms:
+        {% for key, value in patient_info['Condition'].items() %}
+            {% if value['First Recorded'] <= moment.isoformat() %}
+                {{ value['Text'] }}: First recorded on {{ value['First Recorded'] }}
+            {% endif %}
+        {% endfor %}
+        Observations in the last 24 hours:
+        {% for key, value in patient_info['Observation'].items() %}
+            {% if value['Recorded'] <= moment.isoformat() %}
+                {{ value['Text'] }}; Recorded on {{ value['Recorded'] }}
+                {% if 'Value' in value %}
+                    : {{ value['Value'] }}{{ value['Units'] }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        Procedures in the last 24 hours:
+        {% for key, value in patient_info['Procedure'].items() %}
+            {% if value['Started'] <= moment.isoformat() %}
+                {{ value['Text'] }}: Started on {{ value['Started'] }} and ended on {{ value['Ended'] }}
+            {% endif %}
+        {% endfor %}
+    {% endmacro %}
+
+
+    """
+        + template_str
+    )
+
+    # Load and render the template to generate the prompt
+    template = env.from_string(template_str)
+    formatted_admission_note = template.module.format_admission_note(patient_info)
 
     # generate the prompt
-    return generate_prompt(prompt_input, prompt_lib_file)
+    return formatted_admission_note
 
 
 def write_admission_note(persona):
@@ -64,7 +132,17 @@ def write_admission_note(persona):
     logger = logging.getLogger()
 
     # generate the prompt for ChatGPT
-    prompt = generate_prompt_presenting_condition(persona)
+    prompt = generate_prompt_admission_note(persona)
+
+    # check prompt lenghth
+    encoding = tiktoken.encoding_for_model("gpt-4")
+    # or "gpt-3.5-turbo" or "text-davinci-003"
+
+    tokens = encoding.encode(prompt)
+    token_count = len(tokens)
+    if token_count > 8192:
+        logger.info("token length too long")
+        return
 
     # print(prompt)
 
