@@ -76,6 +76,9 @@ def generate_prompt_admission_note(patient_info):
     {% macro format_admission_note(patient_info) %}
         {% set moment = calculate_moment(patient_info) %}
         The time now is {{ moment }}
+        Patient name: {{ patient_info['Patient']['name'] }}
+        Gender: {{ patient_info['Patient']['gender'] }}
+        Age: {{ patient_info['Patient']['age'] }}
         Hospital visit ID: {{ patient_info['Encounter']['Encounter id'] }}
         Hospital visit began at: {{ patient_info['Encounter']['Encounter Started'] }}
         Type of admission: {{ patient_info['Encounter']['Type of admission'] }}
@@ -117,10 +120,10 @@ def generate_prompt_admission_note(patient_info):
 
 def write_admission_note(persona):
     """
-    Takes in admission note, and uses OpenAI to verify whether the
-    patient should be admitted
+    Takes in patient information, and writes an admission note
     ARGS:
-      Admission_Note: the note documenting a decision to admit
+      patient_info: details of the patient encounter, which will be parsed
+      to include only the first 24 hours
     RETURNS:
       a response from OpenAI's GPT server.
       If successful, will return a agree/disagree and some feedback
@@ -152,24 +155,24 @@ def write_admission_note(persona):
         "parameters": {
             "type": "object",
             "properties": {
-                "admission_note": {
+                "history_of_present_illness": {
                     "type": "string",
-                    "description": "Admission note.",
+                    "description": "current complaint",
                 },
-                "diagnosis": {
+                "social_history": {
                     "type": "string",
-                    "description": "diagnosis",
+                    "description": "lifestyle and support systems",
                 },
-                "length_of_stay": {
+                "assessment_and_plan": {
                     "type": "string",
-                    "description": "Estimate lenght of hospital visit.",
+                    "description": "diagnosis and plan",
                 },
             },
         },
         "required": [
-            "admission_note",
-            "diagnosis",
-            "length_of_stay",
+            "history_of_present_illness",
+            "social_history",
+            "assessment_and_plan",
         ],
     }
 
@@ -235,9 +238,9 @@ def write_admission_note(persona):
             )
     try:
         return (
-            content_json["admission_note"],
-            content_json["diagnosis"],
-            content_json["length_of_stay"],
+            content_json["history_of_present_illness"],
+            content_json["social_history"],
+            content_json["assessment_and_plan"],
         )
     except:
         logger.info("failed on json argument")
