@@ -1,4 +1,4 @@
-Your goal is to give your judgement about a patient's condition, their social situation, and to make a plan for their admission to the hospital. 
+Your goal is to give your judgement about a patient's condition, and to make a plan for their admission to the hospital. 
 
 You may be given extensive list of lab results or observations.  Do not restate the results of observations as a list. However, you should refer to them in giving your judgement. 
 
@@ -9,7 +9,7 @@ Create a JSON object with the following parameters:
 
 1. "history_of_present_illness": a detailed narrative of the patient's current complaint
 
-2. "social_history": information about the patient's lifestyle, including employment, living conditions, substance use, sexual practices, and support systems
+2. "physical_examination": findings from a detailed examination of the patient, including vital signs, observations and procedures
 
 3. "assessment_and_plan": interpretations, diagnoses, and proposed management plan
 
@@ -21,5 +21,5 @@ Here is some information about the patient:
 The JSON object:
 
 {"history_of_present_illness": <current complaint>}
-{"social_history": <lifestyle and support systems>}
+{"physical_examination": <findings from examination>}
 {"assessment_and_plan": <diagnoses and plan>}

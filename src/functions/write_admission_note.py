@@ -159,9 +159,9 @@ def write_admission_note(persona):
                     "type": "string",
                     "description": "current complaint",
                 },
-                "social_history": {
+                "physical_examination": {
                     "type": "string",
-                    "description": "lifestyle and support systems",
+                    "description": "results of examination",
                 },
                 "assessment_and_plan": {
                     "type": "string",
@@ -171,7 +171,7 @@ def write_admission_note(persona):
         },
         "required": [
             "history_of_present_illness",
-            "social_history",
+            "physical_examination",
             "assessment_and_plan",
         ],
     }
@@ -239,7 +239,7 @@ def write_admission_note(persona):
     try:
         return (
             content_json["history_of_present_illness"],
-            content_json["social_history"],
+            content_json["physical_examination"],
             content_json["assessment_and_plan"],
         )
     except:
