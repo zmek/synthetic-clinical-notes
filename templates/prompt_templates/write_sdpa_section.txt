@@ -1,0 +1,32 @@
+# from https://github.com/tobias17/GenerationLandTutorials/blob/main/2%20ChatGPT%20Form%20Prompting/prompt.py
+You will help me fill out a form documenting factors affecting the discharge of a hospital inpatient. The Section is !<INPUT 0>! 
+
+The attributes of the patient are !<INPUT 1>! 
+
+The answer choices are !<INPUT 2>! 
+
+When you see `choices=[x, y, z]` then you are to choose one item from that list (x, y, or z in that example). Do not choose more than one option. Do not choose something that is not in the list.
+
+I will now provide examples where the Section is `Fruit`, the attributes are `A plump juicy fruit used for cider` and the answer choices are `Shape=[round, long]`
+
+Example 1 shows a good example of a filled out form 
+
+```
+Section: Fruit
+Shape: round
+```
+
+Example 2 shows a bad example of a filled out form 
+```
+Section: Fruit
+Shape: spherical
+```
+This is a bad example because shape attribute spherical is not from the list of options to choose from
+
+Example 3 shows another bad example of a filled out form 
+```
+Section: Fruit
+Shape: long
+```
+This is a bad example because, while `long` is a valid option, it is not the best answer for plump juicy fruit used for cider, which would be an apple, which is round
+

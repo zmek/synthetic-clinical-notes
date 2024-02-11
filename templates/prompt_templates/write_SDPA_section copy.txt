@@ -1,0 +1,52 @@
+# from https://github.com/tobias17/GenerationLandTutorials/blob/main/2%20ChatGPT%20Form%20Prompting/prompt.py
+You will help me fill out a form documenting factors affecting the discharge of a hospital inpatient. The section is !<INPUT 0>! 
+
+If you see `choices=[x, y, z]` then you are to choose one item from that list (x, y, or z in that example). Do not choose more than 1 option. Do not choose something that is not in the list.
+
+The choices are !<INPUT 1>! 
+
+If you see something like:
+```
+Footwear: choices=[sneakers, sandals]
+    if (choice == sneakers) {
+        Brand: choices=[Nike, Adidas]
+    else {
+        Brand: choices=[Crocs, Teva]
+    }
+```
+Then you must fill out the items in the if/else block based on the choice you made in the previous item in the form.
+
+I will now provide examples for the following design sheet for a fruit
+```
+Name: 
+Taste: choices=[sweet, sour]
+    if (choice == sweet) {
+        Type: choices=[sugary, honeyed]
+    else {
+        Kick: choices=[acidic, tart]
+    }
+```
+
+Example 1 shows a good example of a filled out form:
+```
+Section: Apple
+Taste: sweet
+Type: sugary
+```
+
+Example 2 shows a bad example of a filled out form:
+```
+Section: Apple
+Taste: sweet
+Type: Dancer
+```
+This is a bad example because Type attribute Dancer is not from the list of options to choose from
+
+Example 3 shows another bad example of a filled out form:
+```
+Section: Banana
+Taste: sweet
+Kick: acidic
+```
+This is a bad example because, while `Kick: acidic` is a valid option, it should only be picked when the taste is sour, not sweet.
+
