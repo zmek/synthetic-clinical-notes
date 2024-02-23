@@ -15,6 +15,12 @@
 │   ├── MIMIC-III
 │   │   ├── NOTEEVENTS.csv
 │   │   └── NOTEEVENTS.csv.gz
+│   ├── clinical_embeddings
+│   │   ├── W2V_100
+│   │   │   ├── w2v_oa_all_100d.bin
+│   │   │   ├── w2v_oa_all_100d.bin.trainables.syn1neg.npy
+│   │   │   └── w2v_oa_all_100d.bin.wv.vectors.npy
+│   │   └── w2v_100d_oa_all.tar.gz
 │   ├── coherent-11-07-2022
 │   │   ├── README.md
 │   │   ├── csv
@@ -3504,7 +3510,9 @@
 │   ├── log_20231022.txt
 │   ├── log_20231027.txt
 │   ├── log_20231029.txt
-│   └── log_20240129.txt
+│   ├── log_20240129.txt
+│   ├── log_20240204.txt
+│   └── log_20240209.txt
 ├── notebooks
 │   ├── experiment-1.0.1.ipynb
 │   ├── experiment-1.0.ipynb
@@ -3513,8 +3521,10 @@
 │   ├── experiment-1.1.3.ipynb
 │   ├── experiment-1.1.ipynb
 │   ├── experiment-2.0.ipynb
+│   ├── explore-MIMIC-III.ipynb
 │   ├── explore-coherent-data.ipynb
-│   └── explore-nhse-ae-data.ipynb
+│   ├── explore-nhse-ae-data.ipynb
+│   └── explore_clinical-embeddings.ipynb
 ├── pyproject.toml
 ├── requirements.txt
 ├── src
@@ -3555,7 +3565,8 @@
 │   │   ├── prompt_functions.py
 │   │   ├── set_up_logging.py
 │   │   ├── verify_admission_decision.py
-│   │   └── write_admission_note.py
+│   │   ├── write_admission_note.py
+│   │   └── write_sdpa_form.py
 │   └── utils
 │       ├── __init__.py
 │       ├── __pycache__
@@ -3569,8 +3580,10 @@
 │       ├── pick_medical_condition.txt
 │       ├── pick_medical_condition_extended.txt
 │       ├── verify_admission_decision.txt
-│       └── write_admission_note.txt
+│       ├── write_SDPA_section copy.txt
+│       ├── write_admission_note.txt
+│       └── write_sdpa_section.txt
 └── tests
     └── __init__.py
 
-25 directories, 3549 files
+27 directories, 3560 files
