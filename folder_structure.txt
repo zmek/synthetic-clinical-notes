@@ -3522,9 +3522,11 @@
 │   ├── experiment-1.1.ipynb
 │   ├── experiment-2.0.ipynb
 │   ├── explore-MIMIC-III.ipynb
+│   ├── explore-UniversalNER.ipynb
+│   ├── explore-clinical-embeddings.ipynb
 │   ├── explore-coherent-data.ipynb
-│   ├── explore-nhse-ae-data.ipynb
-│   └── explore_clinical-embeddings.ipynb
+│   ├── explore-llama.ipynb
+│   └── explore-nhse-ae-data.ipynb
 ├── pyproject.toml
 ├── requirements.txt
 ├── src
@@ -3540,7 +3542,9 @@
 │   │   ├── experiment_1.1.3_20231029_1823.json
 │   │   ├── experiment_1.1_20231006_0850.json
 │   │   ├── experiment_1.1_20231008_2049.json
-│   │   └── experiment_1.1_20231008_2106.json
+│   │   ├── experiment_1.1_20231008_2106.json
+│   │   ├── explore_llama_20240225_1136.json
+│   │   └── explore_llama_20240225_1202.json
 │   ├── data_ingestion
 │   │   ├── __init__.py
 │   │   ├── __pycache__
@@ -3586,4 +3590,4 @@
 └── tests
     └── __init__.py
 
-27 directories, 3560 files
+27 directories, 3564 files
